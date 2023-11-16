@@ -7,14 +7,15 @@ import random
 import numpy as np
 import cv2
 
-# Configuration variables
-H1 = 200
-W1 = 200
+# Configuration variables. Play with these.
+H1 = 50
+W1 = 50
 KNUM = 25  #Local Randomness
 MAX_USES_PER_IMAGE = 7  # Set this to your preferred limit
-alpha = 0.3 # Transparency level
-ImageName="use4.jpg"
-MAINIMAGE="E:/Projects/PHOTOS/JMCROPPER/Mozie/USE/ORI/"+ImageName
+alpha = 0.3 # Transparency level for overleyed image.
+ImageName="rb.jpg"  #This is the main image
+MAINIMAGE="E:\\Projects\\MOZIECODE2\\PhotoMosaic-main\\PhotoMosaic-main\\"+ImageName
+PHOTOSETS="E:\\Projects\\MOZIECODE2\\PhotoMosaic-main\\PhotoMosaic-main\\animals" #This is where all the "small" photos is 
 
 def get_average_color(img):
     average_color = np.average(np.average(img, axis=0), axis=0)
@@ -38,12 +39,13 @@ def get_closest_colors(color, colors, k):
 image_usage_count = {}
 
 if "cache.json" not in os.listdir():
-    imgs_dir = pathlib.Path("E:\Projects\PHOTOS\JMCROPPER\ALLx\mirror")
+    imgs_dir = pathlib.Path(PHOTOSETS)
     images = list(imgs_dir.glob("**/*.jpg"))
 
     data = {}
     image_usage_count = {}  
     for img_path in images:
+        print(".")
         img = cv2.imread(str(img_path))
         average_color = get_average_color(img)
         img_path_str = str(img_path.resolve())  
@@ -129,9 +131,7 @@ original_img = cv2.imread(MAINIMAGE)
 
 img_resized_for_overlay = cv2.resize(img, (original_img.shape[1], original_img.shape[0]))
 
-
 overlay_img = cv2.addWeighted(img_resized_for_overlay, 1 - alpha, original_img, alpha, 0)
-
 
 cv2.imshow("Image", overlay_img)
 cv2.waitKey(1)
