@@ -1,6 +1,9 @@
 
 # Photo Mosaic Creator
 
+![Description of the image](images/rb.jpgoverley.jpg)
+
+
 ## Overview
 
 The Photo Mosaic Creator is a Python project that transforms an input image into a mosaic. It comprises two main scripts: `MakeMozzie.py` for creating the mosaic and `MirrorImages.py` for adding variety to the mosaic tiles.
@@ -56,3 +59,7 @@ Feel free to contribute by creating issues or submitting pull requests for impro
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Credits
+This project uses some code from [PhotoMosaic by Enigma-52](https://github.com/Enigma-52/PhotoMosaic).
+
